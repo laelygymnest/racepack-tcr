@@ -1,74 +1,90 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Racepack — Dashboard Stok Baju</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <title>Manajemen Stok Baju</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- LOGIN -->
-  <div id="page-login" class="page centered">
-    <div class="card login-card">
-      <img src="logo.jpg" alt="Logo" class="logo" />
-      <h2>Login</h2>
 
-      <label for="username">Username</label>
-      <input id="username" type="text" placeholder="master / tcr" />
+<!-- Halaman Login -->
+<div id="loginPage" class="center">
+    <h2>Login</h2>
+    <input type="password" id="password" placeholder="Masukkan Password">
+    <button id="loginBtn">Masuk</button>
+    <p id="loginError" style="color:red;"></p>
+</div>
 
-      <label for="password">Password</label>
-      <input id="password" type="password" placeholder="Masukkan password" />
+<!-- Halaman Utama -->
+<div id="mainPage" style="display:none;">
+    <h1>Manajemen Stok Baju</h1>
+    <div id="userRole"></div>
 
-      <div class="row gap">
-        <button id="btn-login" class="btn primary">Masuk</button>
-        <button id="btn-sample" class="btn muted">Isi contoh</button>
-      </div>
-
-      <p id="login-error" class="error hidden">Username atau password salah.</p>
-      <small class="muted">Tegal City Run</small>
+    <!-- Form Tambah Data -->
+    <div id="formMaster" style="display:none;">
+        <h3>Tambah Data Peserta</h3>
+        <input type="text" id="kategori" placeholder="Kategori">
+        <input type="text" id="bib" placeholder="No BIB">
+        <input type="text" id="nama" placeholder="Nama Peserta">
+        <select id="size">
+            <option value="">Pilih Size</option>
+            <option value="XS">XS</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="XXL">XXL</option>
+            <option value="XXXL">XXXL</option>
+        </select>
+        <input type="text" id="barcode" placeholder="Barcode">
+        <button id="addData">Tambah</button>
     </div>
-  </div>
 
-  <!-- DASHBOARD -->
-  <div id="page-dashboard" class="page hidden">
-    <header class="header">
-      <div class="hdr-left">
-        <img src="logo.jpg" alt="Logo" class="logo small" />
-        <div>
-          <h1>Racepack Dashboard</h1>
-          <div class="muted">Kelola pengambilan baju — role: <span id="current-role"></span></div>
-        </div>
-      </div>
-      <div class="hdr-right">
-        <button id="btn-logout" class="btn">Logout</button>
-      </div>
-    </header>
+    <!-- Form Update Staff -->
+    <div id="formStaff" style="display:none;">
+        <h3>Update Data Peserta</h3>
+        <input type="text" id="editIndex" placeholder="Index Data" style="width:80px;">
+        <select id="status">
+            <option value="">Pilih Status</option>
+            <option value="Belum Diambil">Belum Diambil</option>
+            <option value="Diambil">Diambil</option>
+        </select>
+        <input type="text" id="staffName" placeholder="Nama Staff">
+        <input type="text" id="pengambil" placeholder="Nama Pengambil">
+        <input type="text" id="telp" placeholder="No HP Pengambil">
+        <input type="text" id="idCard" placeholder="No ID Card Pengambil">
+        <input type="text" id="keterangan" placeholder="Keterangan">
+        <button id="updateData">Update</button>
+    </div>
 
-    <main class="container">
-      <!-- Stock summary + setting (master only) -->
-      <section class="summary-grid">
-        <div class="stock-card">
-          <h3>Stok per Size</h3>
-          <div id="stock-cards" class="stock-cards"></div>
-        </div>
+    <!-- Search -->
+    <input type="text" id="search" placeholder="Cari BIB / Nama / Barcode">
 
-        <div class="stock-card">
-          <h3>Ringkasan</h3>
-          <p>Total Keseluruhan: <strong id="total-all">0</strong></p>
-          <p>Sudah Diambil: <strong id="total-taken">0</strong></p>
-          <p>Belum Diambil: <strong id="total-remaining">0</strong></p>
+    <!-- Tabel Data -->
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>Index</th>
+                <th>Kategori</th>
+                <th>No BIB</th>
+                <th>Nama Peserta</th>
+                <th>Size</th>
+                <th>Barcode</th>
+                <th>Status</th>
+                <th>Nama Staff</th>
+                <th>Nama Pengambil</th>
+                <th>No HP Pengambil</th>
+                <th>ID Card</th>
+                <th>Keterangan</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
 
-          <div id="master-stock-settings" class="mt-10 hidden">
-            <h4>Atur stok awal (Master)</h4>
-            <div id="stock-settings-form"></div>
-            <button id="save-stock" class="btn primary small">Simpan Stok</button>
-          </div>
-        </div>
-      </section>
+    <!-- Stok Counter -->
+    <div id="stockCounter"></div>
+</div>
 
-      <!-- Add entry (Master only) -->
-      <section id="add-entry-section" class="card mt-12 hidden">
-        <h3>Tambah Data Peserta (Master)</h3>
-        <div class="form-grid">
-          <input id="f-kategori" placeholder="Kategori" />
-          <input id="f-no-bib" pl
+<script src="script.js"></script>
+</body>
+</html>
