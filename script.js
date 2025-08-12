@@ -3,7 +3,7 @@
    - stok awal disimpan di localStorage key: 'racepack_stock'
    - akun default:
      master / master123
-     staff  / staff123
+     tcr  / rahasia123
 */
 
 // ---------- CONFIG ----------
@@ -13,7 +13,7 @@ const LS_STOCK = 'racepack_stock';
 // default user accounts (simple, front-end only)
 const USERS = [
   { username: 'master', password: 'master123', role: 'master' },
-  { username: 'staff',  password: 'staff123',  role: 'staff' }
+  { username: 'tcr',  password: 'rahasia123',  role: 'staff' }
 ];
 
 // sizes that we track
