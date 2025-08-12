@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Racepack — Dashboard Stok Baju</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- LOGIN -->
+  <div id="page-login" class="page centered">
+    <div class="card login-card">
+      <img src="logo.jpg" alt="Logo" class="logo" />
+      <h2>Login</h2>
+
+      <label for="username">Username</label>
+      <input id="username" type="text" placeholder="master / staff" />
+
+      <label for="password">Password</label>
+      <input id="password" type="password" placeholder="Masukkan password" />
+
+      <div class="row gap">
+        <button id="btn-login" class="btn primary">Masuk</button>
+        <button id="btn-sample" class="btn muted">Isi contoh</button>
+      </div>
+
+      <p id="login-error" class="error hidden">Username atau password salah.</p>
+      <small class="muted">Akun default: master /  master123  | staff / rahasia123</small>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="page-dashboard" class="page hidden">
+    <header class="header">
+      <div class="hdr-left">
+        <img src="logo.jpg" alt="Logo" class="logo small" />
+        <div>
+          <h1>Racepack Dashboard</h1>
+          <div class="muted">Kelola pengambilan baju — role: <span id="current-role"></span></div>
+        </div>
+      </div>
+      <div class="hdr-right">
+        <button id="btn-logout" class="btn">Logout</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- Stock summary + setting (master only) -->
+      <section class="summary-grid">
+        <div class="stock-card">
+          <h3>Stok per Size</h3>
+          <div id="stock-cards" class="stock-cards"></div>
+        </div>
+
+        <div class="stock-card">
+          <h3>Ringkasan</h3>
+          <p>Total Keseluruhan: <strong id="total-all">0</strong></p>
+          <p>Sudah Diambil: <strong id="total-taken">0</strong></p>
+          <p>Belum Diambil: <strong id="total-remaining">0</strong></p>
+
+          <div id="master-stock-settings" class="mt-10 hidden">
+            <h4>Atur stok awal (Master)</h4>
+            <div id="stock-settings-form"></div>
+            <button id="save-stock" class="btn primary small">Simpan Stok</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Add entry (Master only) -->
+      <section id="add-entry-section" class="card mt-12 hidden">
+        <h3>Tambah Data Peserta (Master)</h3>
+        <div class="form-grid">
+          <input id="f-kategori" placeholder="Kategori" />
+          <input id="f-no-bib" pl
